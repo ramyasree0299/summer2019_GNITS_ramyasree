@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     {% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}"  type="text/css">
+</head>
+<body>
+        <br>
+        <br>
+        <center>
+            <table id="customers">
+            <tr>
+                <th>Names</th>
+                <th>Acronym</th>
+                <th>Actions</th>
+            </tr>
+                {% for i in result_set%}
+                <tr>
+                    <td>{{i.name|safe}}</td>
+                    <td>{{i.acronym|safe}}</td>
+                    <td><a class="edit_delete" href="http://127.0.0.1:8000/onlineapp/colleges/{{i.acronym}}/edit">Edit</a>|<a class="edit_delete" href="http://127.0.0.1:8000/onlineapp/college/{{i.acronym}}/delete">Delete</a></td>
+                </tr>
+                {%endfor%}
+        </table>
+        </center>
+</body>
+</html>

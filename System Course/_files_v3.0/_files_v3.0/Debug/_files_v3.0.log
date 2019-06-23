@@ -1,0 +1,11 @@
+﻿Build started 04-06-2019 02:46:51.
+     1>Project "C:\Users\RamyaV\documents\visual studio 2013\Projects\_files_v3.0\_files_v3.0\_files_v3.0.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\RamyaV\documents\visual studio 2013\Projects\_files_v3.0\Debug\_files_v3.0.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\RamyaV\documents\visual studio 2013\Projects\_files_v3.0\Debug\_files_v3.0.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\RamyaV\documents\visual studio 2013\Projects\_files_v3.0\Debug\_files_v3.0.lib" /MACHINE:X86 Debug\stdafx.obj
+         Debug\_files_v3.0.obj
+     1>LINK : fatal error LNK1168: cannot open C:\Users\RamyaV\documents\visual studio 2013\Projects\_files_v3.0\Debug\_files_v3.0.exe for writing
+     1>Done Building Project "C:\Users\RamyaV\documents\visual studio 2013\Projects\_files_v3.0\_files_v3.0\_files_v3.0.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.85

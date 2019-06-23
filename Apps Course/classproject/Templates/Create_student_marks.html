@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Record in database</title>
+     <style>
+	input
+  	{
+	border-radius:10px
+	}
+      input.textfield
+      {
+         width:250px;
+         height:20px;
+      }
+      .container
+      {
+        padding-top:100px;
+	    padding-left:330px;
+        padding-right:300px;
+
+      }
+      button.btn
+      {
+        width:123px;
+        height:30px;
+	    color:#ffffff;
+        background-color:#0000ff;
+        border-radius:15px;
+      }
+        input.text
+       {
+	text-align:up;
+	}
+	a{
+	text-decoration:None;
+	}
+   </style>
+ </head>
+ <body>
+ <center>
+ <form method="POST" class="post-form">
+     <fieldset style="width=70%; background-color:#eee; border-radius:30px;">
+	<legend><h1>Student Details</h1></legend>
+        {% csrf_token %}
+        {{form_student}}
+         {{ form_marks}}
+        <button type="submit" class="save btn btn-default">Save Changes</button><br>
+         <h4>{{ title }}</h4>
+    </form>
+     </center>
+</body>
+</html>
+

@@ -1,0 +1,1 @@
+from iplapp.models import *

@@ -1,0 +1,113 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+  a{
+  text-decoration:None;
+  }
+        .add_college
+{
+        width:123px;
+        height:30px;
+	    color:#ffffff;
+        background-color:#BAEFF2ff;
+        border-radius:15px;
+        float:left;
+}
+.logout
+{
+        width:123px;
+        height:30px;
+	    color:#ffffff;
+        background-color:#BAEFF2;
+        border-radius:15px;
+        float:right;
+}
+    </style>
+     {% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}"  type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav" align="right">
+      <li style="color:#ffffff">Welcome To IPLapp</li>
+      {% if 'AnonymousUser' not in user %}
+    <li class="nav-item">
+       <span style="color:#ffffff; padding-right:10px">Welcome,{{ user }}</span>
+    </li>
+      {% endif %}
+      {% if flag %}
+      <li class="nav-item">
+       <span style="color:#ffffff; padding-right:10px"><a href="http://127.0.0.1:8000/iplapp/seasons_view/points_table/{{ season }}/"><button>View Points Table</button></a></span>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+        <center>
+            {% for i in seasons %}
+            <a href="http://127.0.0.1:8000/iplapp/seasons_view/{{ i.season }}/"><button>{{ i.season }}</button></a>
+            {% endfor %}
+            <table border="1" id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+            <tr>
+                {% if not flag %}
+                <th>Season</th>
+                {% endif %}
+                 <th>team1</th>
+                 <th>team2</th>
+                 <th>toss_winner</th>
+                 <th>toss_decision</th>
+                 <th>result</th>
+                 <th>player_of_match</th>
+                 <th>venue</th>
+                {% if flag %}
+                 <th>View Matches</th>
+                    {% endif %}
+
+            </tr>
+                {% for i in result_set%}
+                <tr>
+                     {% if not flag %}
+                        <th>{{i.season|safe}}</th>
+                    {% endif %}
+                    <td>{{i.team1|safe}}</td>
+                    <td>{{i.team2|safe}}</td>
+                    <td>{{i.toss_won|safe}}</td>
+                    <td>{{i.toss_decision|safe}}</td>
+                    <td>{{i.result|safe}}</td>
+                    <td>{{i.player_of_match|safe}}</td>
+                    <td>{{i.venue|safe}}</td>
+                    {% if flag %}
+                        <td><a href="http://127.0.0.1:8000/iplapp/seasons_view/{{i.id}}/matches/">View</a></td>
+                    {% endif %}
+                </tr>
+                {%endfor%}
+        </table>
+            <div class="pagination">
+    <ul class="step-links">
+        {% if result_set.has_previous %}
+            <a href="?page=1"><button>first</button></a>
+            <a href="?page={{ result_set.previous_page_number }}"><button>previous</button></a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ result_set.number }} of {{ result_set.paginator.num_pages }}.
+        </span>
+
+        {% if result_set.has_next %}
+            <a href="?page={{ result_set.next_page_number }}"><button>next</button></a>
+            <a href="?page={{ result_set.paginator.num_pages }}"><button>Last</button></a>
+        {% endif %}
+    </ul>
+</div>
+
+        </center>
+</body>
+</html>

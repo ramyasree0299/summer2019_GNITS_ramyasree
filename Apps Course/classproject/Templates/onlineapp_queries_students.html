@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}"  type="text/css">
+</head>
+<body>
+        <br>
+        <br>
+        <center><h1>{{ title_student }}</h1></center>
+        <center>
+            {% if 'onlineapp.add_college' in permissions and 'onlineapp.delete_college' in permissions %}
+            <a href="students/add/"><button type="submit" class="save btn btn-default">Add Students</button></a>
+            {% endif %}
+            <br>
+            <table id="customers">
+            <tr>
+                <th>Names</th>
+                <th>College</th>
+                <th>Marks</th>
+               {% if 'onlineapp.add_college' in permissions and 'onlineapp.delete_college' in permissions %}
+                    <td><a class="edit_delete" href="http://127.0.0.1:8000/onlineapp/colleges/{{i.college}}/student/{{i.db_folder}}/edit">Edit</a>|<a class="edit_delete" href="http://127.0.0.1:8000/onlineapp/colleges/{{i.college}}/student/{{i.db_folder}}/delete/">Delete</a></td>
+                    {% endif %}
+            </tr>
+                {% for i in result_set%}
+                <tr>
+                    <td>{{i.db_folder|safe}}</td>
+                    <td>{{i.college|safe}}</td>
+                    <td>{{i.mocktest1__total|safe}}</td>
+                     {% if 'onlineapp.add_college' in permissions and 'onlineapp.delete_college' in permissions %}
+                    <td><a class="edit_delete" href="http://127.0.0.1:8000/onlineapp/colleges/{{i.college}}/student/{{i.db_folder}}/edit">Edit</a>|<a class="edit_delete" href="http://127.0.0.1:8000/onlineapp/colleges/{{i.college}}/student/{{i.db_folder}}/delete/">Delete</a></td>
+                    {% endif %}
+                 </tr>
+                {%endfor%}
+        </table>
+        </center>
+</body>
+</html>

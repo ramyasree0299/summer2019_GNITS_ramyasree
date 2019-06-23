@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+     <style>
+	input
+  	{
+	border-radius:10px
+	}
+      input.textfield
+      {
+         width:250px;
+         height:20px;
+      }
+      .container
+      {
+        padding-top:100px;
+	    padding-left:330px;
+        padding-right:300px;
+
+      }
+      button.btn
+      {
+        width:123px;
+        height:30px;
+	color:#ffffff;
+        background-color:#0000ff;
+        border-radius:15px;
+      }
+        input.text
+       {
+	text-align:up;
+	}
+	a{
+	text-decoration:None;
+	}
+   </style>
+ </head>
+ <body>
+ <center>
+ <form method="POST" class="post-form">
+     <fieldset style="width=70%; background-color:#eee; border-radius:30px;">
+	<legend><h1>Sign Up</h1></legend>
+        {% csrf_token %}
+         {{ signup }}
+        <button type="submit" class="save btn btn-default">Signup</button><br>
+
+    </form>
+     <a href="http://127.0.0.1:8000/onlineapp/login">Login here</a>
+     </center>
+</body>
+</html>
+

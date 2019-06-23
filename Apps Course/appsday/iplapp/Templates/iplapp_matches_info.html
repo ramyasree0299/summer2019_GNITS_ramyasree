@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}"  type="text/css">
+
+    <script>
+    function openCity(cityName) {
+  var i;
+  var x = document.getElementsByClassName("tabclass");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  document.getElementById(cityName).style.display = "block";
+}
+</script>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav" align="right">
+      {% if not "AnonymousUser" in user%}
+    <li class="nav-item">
+       <span style="color:#ffffff; padding-right:10px">Welcome,{{ user }}</span>
+    </li>
+    <li class="nav-item">
+      <a href="http://127.0.0.1:8000/iplapp/logout/" align="right"><button class="logout" type="submit" class="save btn btn-default">Logout</button></a><br>
+    </li>
+      {% endif %}
+  </ul>
+</nav>
+<span><span class="card" style="width: 18rem;">
+  <span class="card-body">
+    <h5 class="card-title">Top 3 Bowlers</h5>
+      {% for i in topbowlers %}
+      <p class="card-text"><b>Bowler Name:</b>{{ i.bowler }}</p>
+      <p class="card-text"><b>Bowling team:</b>
+          {{ i.bowling_team }}</p>
+      {% endfor %}
+  </span>
+</span></span>
+<span><span class="card" style="width: 18rem;">
+  <span class="card-body">
+    <h5 class="card-title">Top 3 Batsman</h5>
+      {% for i in toprunners %}
+      <p class="card-text"><b>Batsman Name:</b>{{ i.batsman }}</p>
+      <p class="card-text"><b>Batsman team:</b>
+          {{ i.batting_team }}</p>
+      {% endfor %}
+  </span>
+</span></span>
+
+
+<div class="w3-container">
+<div class="w3-bar w3-black">
+  <button class="w3-bar-item w3-button" onclick="openCity('tab1')">Innings 1</button>
+  <button class="w3-bar-item w3-button" onclick="openCity('tab2')">Innings 2</button>
+</div>
+<div id="tab1" class="w3-container tabclass">
+  {% for i in seasons %}
+            <a href="http://127.0.0.1:8000/iplapp/seasons_view/{{ i.season }}/"><button>{{ i.season }}</button></a>
+            {% endfor %}
+            <table border="1" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+            <tr>
+            <tr>
+                <th>Inning</th>
+                <th>Batsman</th>
+                <th>Bowler</th>
+                <th>Batsman Team</th>
+                <th>Bowler Team</th>
+                <th>Total Runs</th>
+                <th>Over</th>
+            </tr>
+                {% for i in tab1%}
+                <tr>
+                    <td>{{i.inning|safe}}</td>
+                    <td>{{i.batsman|safe}}</td>
+                    <td>{{i.bowler|safe}}</td>
+                    <td>{{i.batting_team|safe}}</td>
+                    <td>{{i.bowling_team|safe}}</td>
+                     <td>{{i.total_runs|safe}}</td>
+                     <td>{{i.over|safe}}</td>
+                 </tr>
+                {%endfor%}
+        </table>
+</div>
+
+<div id="tab2" class="w3-container tabclass" style="display:none">
+           {% for i in seasons %}
+            <a href="http://127.0.0.1:8000/iplapp/seasons_view/{{ i.season }}/"><button>{{ i.season }}</button></a>
+            {% endfor %}
+            <table border="1" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+            <tr>
+            <tr>
+                <th>Inning</th>
+                <th>Batsman</th>
+                <th>Bowler</th>
+                <th>Batsman Team</th>
+                <th>Bowler Team</th>
+                <th>Total Runs</th>
+                <th>Over</th>
+            </tr>
+                {% for i in tab2%}
+                <tr>
+                    <td>{{i.inning|safe}}</td>
+                    <td>{{i.batsman|safe}}</td>
+                    <td>{{i.bowler|safe}}</td>
+                    <td>{{i.batting_team|safe}}</td>
+                    <td>{{i.bowling_team|safe}}</td>
+                     <td>{{i.total_runs|safe}}</td>
+                     <td>{{i.over|safe}}</td>
+                 </tr>
+                {%endfor%}
+        </table>
+     </div>
+</body>
+</html>

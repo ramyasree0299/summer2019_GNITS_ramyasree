@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+     <style>
+	input
+  	{
+	border-radius:10px
+	}
+      input.textfield
+      {
+         width:250px;
+         height:20px;
+      }
+      .container
+      {
+        padding-top:100px;
+	    padding-left:330px;
+        padding-right:300px;
+
+      }
+      button.btn
+      {
+        width:123px;
+        height:30px;
+	color:#ffffff;
+        background-color:#0000ff;
+        border-radius:15px;
+      }
+        input.text
+       {
+	text-align:up;
+	}
+	a{
+	text-decoration:None;
+	}
+   </style>
+ </head>
+ <body>
+ <center>
+ <form method="POST" class="post-form">
+     <fieldset style="width=70%; background-color:#eee; border-radius:30px;">
+	<legend><h1>Enter your Premium/subscription details</h1></legend>
+        {% csrf_token %}
+         {{ login }}
+        <button type="submit" class="save btn btn-default">Login</button><br>
+    </form>
+     </center>
+</body>
+</html>
+

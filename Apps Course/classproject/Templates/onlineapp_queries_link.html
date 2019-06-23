@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .add_college
+{
+        width:123px;
+        height:30px;
+	    color:#ffffff;
+        background-color:#BAEFF2ff;
+        border-radius:15px;
+        float:left;
+}
+.logout
+{
+        width:123px;
+        height:30px;
+	    color:#ffffff;
+        background-color:#BAEFF2;
+        border-radius:15px;
+        float:right;
+}
+    </style>
+     {% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}"  type="text/css">
+</head>
+<body>
+        <br>
+        <br>
+        <center>
+             {% if 'onlineapp.add_college' in permissions and 'onlineapp.delete_college' in permissions %}
+             <a href="colleges/add/"><button class="add_college" type="submit" class="save btn btn-default">Add College</button></a><br>
+            {% endif %}
+            <a href="logout/"><button class="logout" type="submit" class="save btn btn-default">Logout</button></a><br>
+            <table id="customers">
+            <tr>
+                <th>Names</th>
+                <th>Acronym</th>
+                <th>Link</th>
+                {% if 'onlineapp.add_college' in permissions and 'onlineapp.delete_college' in permissions %}
+                <th>Actions</th>
+                {% endif %}
+            </tr>
+                {% for i in result_set%}
+                <tr>
+                    <td>{{i.name|safe}}</td>
+                    <td>{{i.acronym|safe}}</td>
+                    <td><a href="college/{{i.acronym}}/">college_students_info_{{i.acronym}}</a></td>
+                    {% if 'onlineapp.add_college' in permissions and 'onlineapp.delete_college' in permissions %}
+                    <td><a class="edit_delete" href="http://127.0.0.1:8000/onlineapp/colleges/{{i.acronym}}/edit">Edit</a>|<a class="edit_delete" href="http://127.0.0.1:8000/onlineapp/colleges/{{i.acronym}}/delete">Delete</a></td>
+                    {% endif %}
+                </tr>
+                {%endfor%}
+        </table>
+        </center>
+</body>
+</html>
